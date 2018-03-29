@@ -13,7 +13,7 @@
   <div class="task_list">
     <h4>Task List:</h4>
     <p *ngFor="let item of tasks$ | async; let i = index">
-      <span>{{ item }}<button type="button" (click)="removeTask(item)">X</button></span>
+      <span>{{ item.task }}<button type="button" (click)="removeTask(item)">X</button></span>
     </p>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../store/index';
 import { Observable } from 'rxjs/Observable';
-import { TASK_GET, TASK_REMOVE } from '../store/task/task.actions';
+import { TASK_GET, TASK_REMOVE, TASK_ADD } from '../store/task/task.actions';
 
 @Component({
   selector: 'app-todo-list',
@@ -35,12 +35,17 @@ export class TodoListComponent implements OnInit {
 
   addTask(formData) {
     console.log(formData);
+    this.store.dispatch({
+      type: TASK_ADD,
+      payload: formData
+    });
   }
 
   removeTask(task) {
+    console.log(task);
     this.store.dispatch({
       type: TASK_REMOVE,
-      payload: task
+      payload: task._id
     });
   }
 

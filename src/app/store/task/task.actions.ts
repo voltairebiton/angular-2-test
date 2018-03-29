@@ -5,6 +5,10 @@ export const TASK_GET = '[Task] get';
 export const TASK_GET_SUCCESS = '[Task] get success';
 export const TASK_GET_FAIL = '[Task] get fail';
 
+export const TASK_ADD = '[Task] add new';
+export const TASK_ADD_FAIL = '[Task] add new fail';
+export const TASK_ADD_SUCCESS = '[Task] add new success';
+
 export const TASK_REMOVE = '[Task] remove';
 export const TASK_REMOVE_FAIL = '[Task] remove fail';
 export const TASK_REMOVE_SUCCESS = '[Task] remove success';
@@ -27,7 +31,26 @@ export class TaskGetFail implements Action {
   constructor(public payload: string) {}
 }
 
-/* Feed Remove */
+/* Task Add */
+export class TaskAdd implements Action {
+  readonly type = TASK_ADD;
+
+  constructor(public payload: string) {}
+}
+
+export class TaskAddSuccess implements Action {
+  readonly type = TASK_ADD_SUCCESS;
+
+  constructor(public payload: ITask) {}
+}
+
+export class TaskAddFail implements Action {
+  readonly type = TASK_ADD_FAIL;
+
+  constructor(public payload: string) {}
+}
+
+/* Task Remove */
 export class TaskRemove implements Action {
   readonly type = TASK_REMOVE;
 
@@ -52,4 +75,7 @@ export type Actions =
   | TaskGetFail
   | TaskRemove
   | TaskRemoveSuccess
-  | TaskRemoveFail;
+  | TaskRemoveFail
+  | TaskAdd
+  | TaskAddFail
+  | TaskAddSuccess;

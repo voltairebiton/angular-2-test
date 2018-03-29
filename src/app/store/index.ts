@@ -12,7 +12,7 @@ export interface IAppState {
   feed: IFeed[];
   profile: IProfile;
   weather: IWeather;
-  task: ITask;
+  task: ITask[];
 }
 
 // all new reducers should be define here

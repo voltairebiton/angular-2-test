@@ -1,11 +1,58 @@
 import { Request, Response, Router } from "express";
+import * as uuid from "uuid";
+import { con } from "../mongodb";
 
 const taskRouter: Router = Router();
 
-const task = ["unggoy", "ungas", "holy shit"];
-
 taskRouter.get("/", (request: Request, response: Response) => {
-  response.json(task);
+  con((dbo) => {
+    dbo.collection("todo").find({}).toArray((err, result) => {
+      if (err) {
+        throw err;
+      }
+      // tslint:disable-next-line:no-console
+      console.log(result);
+      // const task = JSON.parse('1'); //result.task;
+      response.json(result);
+    // response.json(result.task);
+    });
+  });
+});
+
+taskRouter.post("/", (request: Request, response: Response) => {
+  con((dbo) => {
+    const obj = { _id: uuid.v4(), task: request.body.task };
+    dbo.collection("todo").insertOne(obj, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      // tslint:disable-next-line:no-console
+      console.log(result);
+      // const task = JSON.parse('1'); //result.task;
+      // response.json(result);
+      response.json(obj);
+    // response.json(result.task);
+    });
+  });
+});
+
+taskRouter.delete("/:id", (request: Request, response: Response) => {
+  con((dbo) => {
+    const query = { _id: request.params.id };
+
+    dbo.collection("todo").deleteOne(query, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      // tslint:disable-next-line:no-console
+      console.log(result);
+
+      response.json({
+        _id: request.params.id,
+      });
+    // response.json(result.task);
+    });
+  });
 });
 
 export { taskRouter };
