@@ -3,7 +3,7 @@
     <h3>TODO List</h3>
   </div>
   <div class="content">
-    <form #todoForm="ngForm" (ngSubmit)="createTask(todoForm.value)" >
+    <form #todoForm="ngForm" (ngSubmit)="addTask(todoForm.value)" >
         <input [ngModel]="taskEntry" name="task" #task="ngModel" >
         <button type="submit">Add Task</button>
     </form>
@@ -13,7 +13,7 @@
   <div class="task_list">
     <h4>Task List:</h4>
     <p *ngFor="let item of tasks$ | async; let i = index">
-      {{ item }}
+      <span>{{ item }}<button type="button" (click)="removeTask(item)">X</button></span>
     </p>
   </div>
 </div>
