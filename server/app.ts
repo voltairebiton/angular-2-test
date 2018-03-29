@@ -7,6 +7,7 @@ import { feedRouter } from "./routes/feed";
 import { loginRouter } from "./routes/login";
 import { protectedRouter } from "./routes/protected";
 import { publicRouter } from "./routes/public";
+import { taskRouter } from "./routes/task";
 import { userRouter } from "./routes/user";
 
 const app: express.Application = express();
@@ -23,6 +24,7 @@ app.use("/api/login", loginRouter);
 app.use("/api/public", publicRouter);
 app.use("/api/feed", feedRouter);
 app.use("/api/user", userRouter);
+app.use("/api/task", taskRouter);
 
 if (app.get("env") === "production") {
 

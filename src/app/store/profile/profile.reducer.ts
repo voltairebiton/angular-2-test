@@ -7,7 +7,6 @@ export interface IProfile {
 }
 
 export function profileReducer(state: IProfile, action: Actions): IProfile {
-
   switch (action.type) {
 
     case USER_GET_SUCCESS:

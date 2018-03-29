@@ -15,6 +15,7 @@ import { WeatherService } from './weather/weather.service';
 import { WeatherEffects } from './store/weather/weather.effects';
 import { FeedEffects } from './store/feed/feed.effects';
 import { ProfileEffects } from './store/profile/profile.effects';
+import { TaskEffects } from './store/task/task.effects';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
     EffectsModule.forRoot([
       ProfileEffects,
       FeedEffects,
-      WeatherEffects
+      WeatherEffects,
+      TaskEffects
     ]),
     !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
     RouterModule.forRoot(

@@ -1,0 +1,19 @@
+<div class="todo_main">
+  <div class="Title">
+    <h3>TODO List</h3>
+  </div>
+  <div class="content">
+    <form #todoForm="ngForm" (ngSubmit)="createTask(todoForm.value)" >
+        <input [ngModel]="taskEntry" name="task" #task="ngModel" >
+        <button type="submit">Add Task</button>
+    </form>
+
+    <p>Typing: {{ taskEntry }}</p>
+  </div>
+  <div class="task_list">
+    <h4>Task List:</h4>
+    <p *ngFor="let item of tasks$ | async; let i = index">
+      {{ item }}
+    </p>
+  </div>
+</div>

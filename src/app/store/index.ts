@@ -4,6 +4,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { feedReducer, IFeed } from './feed/feed.reducer';
 import { profileReducer, IProfile } from './profile/profile.reducer';
 import { IWeather, weatherReducer } from './weather/weather.reducer';
+import { ITask, taskReducer } from './task/task.reducer';
 import { environment } from '../../environments/environment';
 
 // all new reducers should be define here
@@ -11,20 +12,22 @@ export interface IAppState {
   feed: IFeed[];
   profile: IProfile;
   weather: IWeather;
+  task: ITask;
 }
 
 // all new reducers should be define here
 export const reducers: ActionReducerMap<IAppState> = {
   feed: feedReducer,
   profile: profileReducer,
-  weather: weatherReducer
+  weather: weatherReducer,
+  task: taskReducer
 };
 
 // console.log all actions
 export function logger(reducer: ActionReducer<IAppState>): ActionReducer<any, any> {
   return function(state: IAppState, action: any): IAppState {
-    console.log('state', state);
-    console.log('action', action);
+    // console.log('state', state);
+    // console.log('action', action);
 
     return reducer(state, action);
   };

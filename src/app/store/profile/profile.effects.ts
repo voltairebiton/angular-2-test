@@ -12,7 +12,7 @@ export class ProfileEffects {
   userGet$ = this.actions$
     .ofType(USER_GET)
     .switchMap((action: UserGet) => {
-
+      console.log(this.actions$);
       return this.http.get<any>('/api/user')
         .catch((error) => Observable.of(new UserGetFail(error)))
         .map((response: any) => new UserGetSuccess(response));

@@ -13,7 +13,6 @@ export interface IFeedComment {
 }
 
 export function feedReducer(state: IFeed[] = [], action: Actions): IFeed[] {
-
   switch (action.type) {
 
     case FEED_ADD_SUCCESS:
