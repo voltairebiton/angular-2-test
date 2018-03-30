@@ -7,7 +7,7 @@
         <input [(ngModel)]="taskEntry" name="task" #task="ngModel" >
         <button type="submit">Add Task</button>
     </form>
-    <p *ngIf="taskEntry == ''">Type in a new Task</p>
+    <p *ngIf="taskEntry == '' || taskEntry == null">Type in a new Task</p>
     <p *ngIf="taskEntry !== ''">Typing: {{ taskEntry }}</p>
   </div>
   <div class="task_list">
