@@ -1,6 +1,6 @@
 // tslint:disable-next-line:no-var-requires
 import { MongoClient } from "mongodb";
-const url = "mongodb://heroku_fvq5rqrz:m3kel00mccj49gu8k1ha4qqo95@ds127899.mlab.com:27899/heroku_fvq5rqrz";
+const url = "mongodb://heroku_t4mgjxzt:puh8csv4qhenmata8e5q9f7frd@ds229549.mlab.com:29549/heroku_t4mgjxzt";
 
 const con = function connect(callback) {
     MongoClient.connect(url, (error, db) => {
