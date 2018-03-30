@@ -5,3 +5,15 @@
 .task_list > ul {
     list-style-type: none;
 }
+
+.task_list > ul > li {
+    margin: 5px 0;
+}
+
+.task_list > ul input {
+    margin-right:5px;
+}
+
+.task_list > ul button {
+    margin-left:5px;
+}

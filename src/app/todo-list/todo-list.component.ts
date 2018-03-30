@@ -42,6 +42,7 @@ export class TodoListComponent implements OnInit {
   }
 
   addTask(formData) {
+    this.taskEntry = '';
     this.store.dispatch({
       type: TASK_ADD,
       payload: formData
