@@ -1,0 +1,7 @@
+.task_list {
+    padding-top: 20px;
+}
+
+.task_list > ul {
+    list-style-type: none;
+}

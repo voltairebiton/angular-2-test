@@ -13,6 +13,10 @@ export const TASK_REMOVE = '[Task] remove';
 export const TASK_REMOVE_FAIL = '[Task] remove fail';
 export const TASK_REMOVE_SUCCESS = '[Task] remove success';
 
+export const TASK_SELECTED_REMOVE = '[Task] remove selected';
+export const TASK_SELECTED_REMOVE_FAIL = '[Task] remove selected fail';
+export const TASK_SELECTED_REMOVE_SUCCESS = '[Task] remove selected success';
+
 export class TaskGet implements Action {
   readonly type = TASK_GET;
 
@@ -69,6 +73,25 @@ export class TaskRemoveFail implements Action {
   constructor(public payload: string) {}
 }
 
+/* Task Selected Remove */
+export class TaskSelectedRemove implements Action {
+  readonly type = TASK_SELECTED_REMOVE;
+
+  constructor(public payload: string) {}
+}
+
+export class TaskSelectedRemoveSuccess implements Action {
+  readonly type = TASK_SELECTED_REMOVE_SUCCESS;
+
+  constructor(public payload: ITask) {}
+}
+
+export class TaskSelectedRemoveFail implements Action {
+  readonly type = TASK_SELECTED_REMOVE_FAIL;
+
+  constructor(public payload: string) {}
+}
+
 export type Actions =
   | TaskGet
   | TaskGetSuccess
@@ -78,4 +101,7 @@ export type Actions =
   | TaskRemoveFail
   | TaskAdd
   | TaskAddFail
-  | TaskAddSuccess;
+  | TaskAddSuccess
+  | TaskSelectedRemove
+  | TaskSelectedRemoveFail
+  | TaskSelectedRemoveSuccess;

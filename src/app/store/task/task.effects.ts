@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { TASK_GET, TaskGet, TaskGetFail, TaskGetSuccess, TASK_REMOVE,
   TaskRemove, TaskRemoveSuccess, TaskRemoveFail, TaskAdd, TaskAddFail, TaskAddSuccess,
-  TASK_ADD } from './task.actions';
+  TASK_ADD, TASK_SELECTED_REMOVE, TaskSelectedRemoveFail, TaskSelectedRemoveSuccess } from './task.actions';
 import { ITask } from './task.reducer';
 @Injectable()
 export class TaskEffects {
@@ -39,6 +39,17 @@ export class TaskEffects {
         .map((response: ITask) => new TaskRemoveSuccess(response));
 
     });
+
+    @Effect()
+    removeSelectedTask$ = this.actions$
+      .ofType(TASK_SELECTED_REMOVE)
+      .switchMap((action: TaskRemove) => {
+        return this.http.delete<ITask>(`/api/task/selected/${action.payload}`)
+          .catch((error) => Observable.of(new TaskSelectedRemoveFail(error)))
+          .map((response: ITask) => new TaskSelectedRemoveSuccess(response));
+  
+      });
+  
 
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

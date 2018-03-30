@@ -45,10 +45,29 @@ taskRouter.delete("/:id", (request: Request, response: Response) => {
         throw err;
       }
       // tslint:disable-next-line:no-console
-      console.log(result);
+      console.log(query);
 
       response.json({
         _id: request.params.id,
+      });
+    // response.json(result.task);
+    });
+  });
+});
+
+taskRouter.delete("/selected/:ids", (request: Request, response: Response) => {
+  con((dbo) => {
+    const ids = (request.params.ids).split(",");
+    const query = { _id: {$in: ids }  };
+    dbo.collection("todo").deleteMany(query, (err, obj) => {
+      if (err) {
+        throw err;
+      }
+      // tslint:disable-next-line:no-console
+      console.log(obj.result.n);
+
+      response.json({
+        _id: ids,
       });
     // response.json(result.task);
     });

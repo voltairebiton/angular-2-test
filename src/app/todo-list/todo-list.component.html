@@ -4,7 +4,7 @@
   </div>
   <div class="content">
     <form #todoForm="ngForm" (ngSubmit)="addTask(todoForm.value)" >
-        <input [ngModel]="taskEntry" name="task" #task="ngModel" >
+        <input [(ngModel)]="taskEntry" name="task" #task="ngModel" >
         <button type="submit">Add Task</button>
     </form>
 
@@ -12,8 +12,16 @@
   </div>
   <div class="task_list">
     <h4>Task List:</h4>
-    <p *ngFor="let item of tasks$ | async; let i = index">
-      <span>{{ item.task }}<button type="button" (click)="removeTask(item)">X</button></span>
-    </p>
+    <ul>
+      <li *ngFor="let item of tasks$ | async; let i = index">
+          <span>
+            <input type="checkbox" (change)="selectItem($event, item._id)">
+            {{ item.task }}
+            <button type="button" (click)="removeTask(item)">X</button>
+          </span>
+      </li>
+    </ul>
+
+    <button type="button" (click)="removeSelectedTask()" [disabled]="selectedItems.length == 0">Delete Selected</button>
   </div>
 </div>
