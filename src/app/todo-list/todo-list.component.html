@@ -8,7 +8,7 @@
         <button type="submit">Add Task</button>
     </form>
     <p *ngIf="taskEntry == '' || taskEntry == null">Type in a new Task</p>
-    <p *ngIf="taskEntry !== '' || taskEntry != null">Typing: {{ taskEntry }}</p>
+    <p *ngIf="taskEntry !== '' && taskEntry != null">Typing: {{ taskEntry }}</p>
   </div>
   <div class="task_list">
     <h4>Task List:</h4>
